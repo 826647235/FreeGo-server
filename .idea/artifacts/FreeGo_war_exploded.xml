@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="FreeGo:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/FreeGo_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="FreeGo/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="FreeGo" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
