@@ -7,7 +7,7 @@ public class Save {
         Connection connection=null;
         try {
             connection = ConnectSQL.getConnection();
-            String sql = "insert into Users(Account,Password) values(?,?)";
+            String sql = "insert into member(Account,Password) values(?,?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,user.getAccount());
             preparedStatement.setString(2,user.getPassword());

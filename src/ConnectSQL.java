@@ -9,7 +9,7 @@ public class ConnectSQL {
             Class.forName("com.mysql.jdbc.Driver");
             String user="root";
             String password="wcvr123";
-            String url="jdbc:mysql://localhost:3306/login?useSSL=false";
+            String url="jdbc:mysql://localhost:3306/FreeGo?useSSL=false";
             connection= DriverManager.getConnection(url,user,password);
         } catch (Exception e) {
             e.printStackTrace();

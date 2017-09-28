@@ -31,21 +31,19 @@ public class Register extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private boolean checkRepeat(String account) {
         try {
             Connection connection = ConnectSQL.getConnection();
-            String sql = "select Account form users";
+            String sql = "select Account FROM member WHERE Account=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,account);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()) {
-                if (resultSet.getString("Account").equals(account)) {
-                    return false;
-                } else {
-                    return true;
-                }
+            if(!resultSet.next()) {
+                return true;
+            } else {
+                return false;
             }
         } catch (Exception e) {
             e.printStackTrace();
