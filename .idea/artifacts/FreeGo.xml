@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="FreeGo">
+    <output-path>E:/</output-path>
+    <root id="archive" name="FreeGo.war">
+      <element id="dir-copy" path="$PROJECT_DIR$/out/artifacts/FreeGo_war_exploded" />
+    </root>
+  </artifact>
+</component>

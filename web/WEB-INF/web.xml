@@ -8,11 +8,109 @@
         <servlet-name>Register</servlet-name>
         <servlet-class>Register</servlet-class>
     </servlet>
-
-
     <servlet-mapping>
         <servlet-name>Register</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Community</servlet-name>
+        <servlet-class>Community</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Community</servlet-name>
+        <url-pattern>/community</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCommunity</servlet-name>
+        <servlet-class>GetCommunity</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCommunity</servlet-name>
+        <url-pattern>/getCommunity</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>test</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetPortrait</servlet-name>
+        <servlet-class>GetPortrait</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPortrait</servlet-name>
+        <url-pattern>/getPortrait</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetPicture</servlet-name>
+        <servlet-class>GetPicture</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPicture</servlet-name>
+        <url-pattern>/getPicture</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SavePicture</servlet-name>
+        <servlet-class>SavePicture</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SavePicture</servlet-name>
+        <url-pattern>/savePicture</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCollection</servlet-name>
+        <servlet-class>GetCollection</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCollection</servlet-name>
+        <url-pattern>/getCollection</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Like</servlet-name>
+        <servlet-class>Like</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Like</servlet-name>
+        <url-pattern>/like</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Collection</servlet-name>
+        <servlet-class>Collection</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Collection</servlet-name>
+        <url-pattern>/collection</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetComment</servlet-name>
+        <servlet-class>GetComment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetComment</servlet-name>
+        <url-pattern>/getComment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveComment</servlet-name>
+        <servlet-class>SaveComment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveComment</servlet-name>
+        <url-pattern>/saveComment</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>
