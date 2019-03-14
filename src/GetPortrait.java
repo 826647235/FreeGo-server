@@ -9,14 +9,14 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
+//得到头像
 @WebServlet(name = "GetPortrait")
 public class GetPortrait extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        String name = request.getParameter("name");
-        String portraitPath;
+        String name = request.getParameter("Name");
+        String portraitPath = null;
         try {
             Connection connection = ConnectSQL.getConnection();
             String SQL = "SELECT Portrait from member where Name = ?";
@@ -25,15 +25,14 @@ public class GetPortrait extends HttpServlet {
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
                 portraitPath = resultSet.getString("Portrait");
-            } else {
-                portraitPath = "C:\\picture\\portrait\\default_portrait.jpg";
             }
+            connection.close();
             FileInputStream fileInputStream = new FileInputStream(portraitPath);
             int size =fileInputStream.available();
             byte data[]=new byte[size];
             fileInputStream.read(data);
             fileInputStream.close();
-            response.setConten tType("image/jpg");
+            response.setContentType("image/jpg");
             OutputStream os = response.getOutputStream();
             os.write(data);
             os.flush();

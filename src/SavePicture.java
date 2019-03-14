@@ -10,22 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
-
+//保存动态中的图片
+//小改动
 @WebServlet(name = "SavePicture")
 public class SavePicture extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+        OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
         if (isMultipart) {
             FileItemFactory factory = new DiskFileItemFactory();
                 ServletFileUpload upload = new ServletFileUpload(factory);
                 try {
                     Connection connection = ConnectSQL.getConnection();
-                    PreparedStatement preparedStatement = null;
+                    PreparedStatement preparedStatement;
                     String SQL;
                     String name;
                     String Id;
@@ -43,11 +46,16 @@ public class SavePicture extends HttpServlet {
                         preparedStatement.setInt(1,Integer.parseInt(Id));
                         preparedStatement.setInt(2,Integer.parseInt(Count));
                         preparedStatement.setString(3,file.getPath());
-                        System.out.println("       上传的文件名是:" + file.getName());
+                        preparedStatement.executeUpdate();
                     }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                    connection.close();
+                    out.write("true");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    out.write("false");
+                }
+            out.flush();
+            out.close();
         }
     }
 

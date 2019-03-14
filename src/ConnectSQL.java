@@ -1,6 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+//建立SQL链接
 public class ConnectSQL {
     private static Connection connection=null;
 

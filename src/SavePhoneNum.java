@@ -4,22 +4,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//给评论点赞
-@WebServlet(name = "LikeComment")
-public class LikeComment extends HttpServlet {
+//保存电话号码
+@WebServlet(name = "SavePhoneNum")
+public class SavePhoneNum extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        String Id = request.getParameter("Id");
-        OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
+        String phoneNum = request.getParameter("PhoneNum");
+        String name = request.getParameter("Name");
+        PrintWriter out = response.getWriter();
         try {
             Connection connection = ConnectSQL.getConnection();
-            String SQL = "update comment set LikeNum = LikeNum + 1 where CommentId = ?";
+            String SQL = "Update Location set phone = ? where name = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1,Integer.parseInt(Id));
+            preparedStatement.setString(1,phoneNum);
+            preparedStatement.setString(2,name);
             preparedStatement.executeUpdate();
             out.write("true");
             connection.close();

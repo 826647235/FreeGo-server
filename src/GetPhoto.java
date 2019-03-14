@@ -9,24 +9,24 @@ import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//得到动态的图片信息
-@WebServlet(name = "GetPicture")
-public class GetPicture extends HttpServlet {
+//得到云相册图片
+@WebServlet(name = "GetPhoto")
+public class GetPhoto extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        String id = request.getParameter("Id");
-        String count = request.getParameter("Count");
+        String name = request.getParameter("Name");
+        String position = request.getParameter("Position");
         String path = null;
         try {
             Connection connection = ConnectSQL.getConnection();
-            String SQL = "select Img from picture where ID = ? and Count = ?";
+            String SQL = "select Photo from photo where Position = ? and Name = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1,Integer.parseInt(id));
-            preparedStatement.setInt(2,Integer.parseInt(count));
+            preparedStatement.setInt(1,Integer.parseInt(position));
+            preparedStatement.setString(2,name);
             ResultSet resultSet = preparedStatement.executeQuery();
             if(resultSet.next()) {
-                path = resultSet.getString("Img");
+                path = resultSet.getString("Photo");
             }
             connection.close();
         } catch (Exception e) {
@@ -45,5 +45,6 @@ public class GetPicture extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
     }
 }

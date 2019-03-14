@@ -10,7 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
+//得到动态，一时间顺序降序排列
 @WebServlet(name = "GetCommunity")
 public class GetCommunity extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -18,12 +18,13 @@ public class GetCommunity extends HttpServlet {
         response.setContentType("text/html;charset=utf-8");
         String state = request.getParameter("State");
         String position = request.getParameter("Position");
+        String userName = request.getParameter("Name");
         PrintWriter out = response.getWriter();
         String SQL = null;
         try {
             Connection connection = ConnectSQL.getConnection();
             if (state.equals("new")) {
-                SQL = "select * from community where ID > ?  order by ID DESC ";
+                SQL = "select * from community where ID > ? order by ID DESC ";
             } else if (state.equals("old")) {
                 SQL = "select * from community where ID < ? order by ID DESC";
             }
@@ -39,7 +40,28 @@ public class GetCommunity extends HttpServlet {
                         resultSet.getString("Date") + "##,##" +
                         resultSet.getString("Content") + "##,##" +
                         resultSet.getInt("LikeNum") + "##,##" +
-                        resultSet.getInt("PictureNum") + "@@@";
+                        resultSet.getInt("PictureNum");
+                Connection smallConnection = ConnectSQL.getConnection();
+                String smallSQL = "select * from collection where Name = ? and msgId = ?";
+                PreparedStatement smallPreparedStatement = smallConnection.prepareStatement(smallSQL);
+                smallPreparedStatement.setString(1,userName);
+                smallPreparedStatement.setInt(2,resultSet.getInt("ID"));
+                ResultSet smallResultSet = smallPreparedStatement.executeQuery();
+                if(smallResultSet.next()) {
+                    message += "##,##true";
+                } else {
+                    message += "##,##false";
+                }
+                smallSQL = "select * from islike where Name = ? and msgId = ?";
+                smallPreparedStatement = smallConnection.prepareStatement(smallSQL);
+                smallPreparedStatement.setString(1,userName);
+                smallPreparedStatement.setInt(2,resultSet.getInt("ID"));
+                smallResultSet = smallPreparedStatement.executeQuery();
+                if(smallResultSet.next()) {
+                    message += "##,##true@@@";
+                } else {
+                    message += "##,##false@@@";
+                }
                 messageList.add(message);
                 if (count == 5) {
                     break;

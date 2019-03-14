@@ -5,30 +5,35 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//给评论点赞
-@WebServlet(name = "LikeComment")
-public class LikeComment extends HttpServlet {
+import java.sql.ResultSet;
+//登录
+@WebServlet(name = "Login")
+public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        String Id = request.getParameter("Id");
-        OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
+        String account = request.getParameter("Account");
+        String password = request.getParameter("Password");
+        PrintWriter out = response.getWriter();
         try {
             Connection connection = ConnectSQL.getConnection();
-            String SQL = "update comment set LikeNum = LikeNum + 1 where CommentId = ?";
+            String SQL = "select * from member where Account = ? and Password = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1,Integer.parseInt(Id));
-            preparedStatement.executeUpdate();
-            out.write("true");
+            preparedStatement.setString(1,account);
+            preparedStatement.setString(2,password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                out.write(resultSet.getString("Name"));
+            }
+            out.flush();
+            out.close();
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
-            out.write("false");
         }
-        out.flush();
-        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

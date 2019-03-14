@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//给评论点赞
-@WebServlet(name = "LikeComment")
-public class LikeComment extends HttpServlet {
+import java.sql.ResultSet;
+//得到评论的数目
+@WebServlet(name = "GetCommentNum")
+public class GetCommentNum extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
@@ -17,18 +18,20 @@ public class LikeComment extends HttpServlet {
         OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
         try {
             Connection connection = ConnectSQL.getConnection();
-            String SQL = "update comment set LikeNum = LikeNum + 1 where CommentId = ?";
+            String SQL = "select CommentNum from Community where Id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
             preparedStatement.setInt(1,Integer.parseInt(Id));
-            preparedStatement.executeUpdate();
-            out.write("true");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                out.write(String.valueOf(resultSet.getInt(1)));
+            }
+
             connection.close();
+            out.flush();
+            out.close();
         } catch (Exception e) {
             e.printStackTrace();
-            out.write("false");
         }
-        out.flush();
-        out.close();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

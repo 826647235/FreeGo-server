@@ -4,31 +4,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//给评论点赞
-@WebServlet(name = "LikeComment")
-public class LikeComment extends HttpServlet {
+//保存用户经纬度位置
+@WebServlet(name = "SaveLocation")
+public class SaveLocation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        String Id = request.getParameter("Id");
-        OutputStreamWriter out = new OutputStreamWriter(response.getOutputStream());
+        String name = request.getParameter("Name");
+        String longitude = request.getParameter("Longitude");
+        String latitude = request.getParameter("Latitude");
         try {
             Connection connection = ConnectSQL.getConnection();
-            String SQL = "update comment set LikeNum = LikeNum + 1 where CommentId = ?";
+            String SQL = "Update Location set Longitude = ?, Latitude = ? where Name = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-            preparedStatement.setInt(1,Integer.parseInt(Id));
+            preparedStatement.setDouble(1,Double.parseDouble(longitude));
+            preparedStatement.setDouble(2,Double.parseDouble(latitude));
+            preparedStatement.setString(3,name);
             preparedStatement.executeUpdate();
-            out.write("true");
             connection.close();
         } catch (Exception e) {
             e.printStackTrace();
-            out.write("false");
         }
-        out.flush();
-        out.close();
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

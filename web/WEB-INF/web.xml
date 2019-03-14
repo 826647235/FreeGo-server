@@ -112,5 +112,174 @@
         <url-pattern>/saveComment</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>CheckRepeat</servlet-name>
+        <servlet-class>CheckRepeat</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckRepeat</servlet-name>
+        <url-pattern>/checkRepeat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchFriends</servlet-name>
+        <servlet-class>SearchFriends</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchFriends</servlet-name>
+        <url-pattern>/searchFriends</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetCommentNum</servlet-name>
+        <servlet-class>GetCommentNum</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetCommentNum</servlet-name>
+        <url-pattern>/getCommentNum</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetUser</servlet-name>
+        <servlet-class>GetUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetUser</servlet-name>
+        <url-pattern>/getUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddFriend</servlet-name>
+        <servlet-class>AddFriend</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddFriend</servlet-name>
+        <url-pattern>/addFriend</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetFriends</servlet-name>
+        <servlet-class>GetFriends</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetFriends</servlet-name>
+        <url-pattern>/getFriends</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetPhoto</servlet-name>
+        <servlet-class>GetPhoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPhoto</servlet-name>
+        <url-pattern>/getPhoto</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SavePhoto</servlet-name>
+        <servlet-class>SavePhoto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SavePhoto</servlet-name>
+        <url-pattern>/savePhoto</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetPhotoNum</servlet-name>
+        <servlet-class>GetPhotoNum</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetPhotoNum</servlet-name>
+        <url-pattern>/getPhotoNum</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangeMotto</servlet-name>
+        <servlet-class>ChangeMotto</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeMotto</servlet-name>
+        <url-pattern>/changeMotto</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LikeComment</servlet-name>
+        <servlet-class>LikeComment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LikeComment</servlet-name>
+        <url-pattern>/likeComment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SavePortrait</servlet-name>
+        <servlet-class>SavePortrait</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SavePortrait</servlet-name>
+        <url-pattern>/savePortrait</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SaveLocation</servlet-name>
+        <servlet-class>SaveLocation</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SaveLocation</servlet-name>
+        <url-pattern>/saveLocation</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetNearPeople</servlet-name>
+        <servlet-class>GetNearPeople</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetNearPeople</servlet-name>
+        <url-pattern>/getNearPeople</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JudgeHasPhone</servlet-name>
+        <servlet-class>JudgeHasPhone</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JudgeHasPhone</servlet-name>
+        <url-pattern>/judgeHasPhone</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SavePhoneNum</servlet-name>
+        <servlet-class>SavePhoneNum</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SavePhoneNum</servlet-name>
+        <url-pattern>/savePhoneNum</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Accompany</servlet-name>
+        <servlet-class>Accompany</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Accompany</servlet-name>
+        <url-pattern>/accompany</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChangeAccompany</servlet-name>
+        <servlet-class>ChangeAccompany</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChangeAccompany</servlet-name>
+        <url-pattern>/changeAccompany</url-pattern>
+    </servlet-mapping>
 </web-app>
